@@ -1,28 +1,22 @@
 import React, {useState} from 'react'
-import {auth} from '../firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+
+import { useAuth } from '../context/AuthContext'
 
 const SignIn = () => {
+
+    const {signInHandler} = useAuth()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const signInHandler = (e) => {
-        e.preventDefault()
-        signInWithEmailAndPassword(auth, email, password)
-        .then((useCredential) => {
-            const user = useCredential.user
-            console.log(user)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
 
   return (
     <div>
-        <h1 className="text-2xl text-primary">Sign In</h1>
+        <h1 className="text-2xl text-primary">login to your account</h1>
 
-        <form onSubmit={signIn}>
+        <form onSubmit={(e) => {
+            signInHandler(e, email, password)
+        }}>
             <input type="email" 
                 placeholder='Enter your email' 
                 value={email}
@@ -33,7 +27,7 @@ const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
-            <button className="btn" type='submit'></button>
+            <button className="btn" type='submit'>login</button>
         </form>
     </div>
   )
