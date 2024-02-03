@@ -1,8 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase'
-import {  } from 'firebase/auth'
-import { useNavigate } from "react-router-dom";
 
 // Create context
 const AuthContext = createContext();
@@ -16,15 +14,14 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null)
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate()
-
 // SIGN UP
   const signUpHandler = (e, email, password) => {
     e.preventDefault()
-    createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password)
     .then((useCredential) => {
         const user = useCredential.user
         setCurrentUser(user)
+        return user
     }).catch((error) => {
         console.log(error)
     })
@@ -33,12 +30,12 @@ export const AuthProvider = ({ children }) => {
 // SIGN IN
   const signInHandler = (e, email, password) => {
     e.preventDefault()
-    signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password)
     .then((useCredential) => {
         const user = useCredential.user
         console.log(user)
         setCurrentUser(user)
-        
+        return user
     }).catch((error) => {
         console.log(error)
     })

@@ -3,7 +3,7 @@ import React from 'react'
 function CheckIn() {
   return (
     <div>
-      check in
+      <button className="btn btn-primary btn-lg">check in</button>
     </div>
   )
 }

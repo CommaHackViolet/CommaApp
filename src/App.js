@@ -1,23 +1,30 @@
 
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom'
 import LandingPage from './pages/LandingPage';
+import PrivateRoutes from './components/PrivateRoutes';
 
-import SignIn from './components/SignIn';
+import SignIn from './pages/SignIn';
 import SignUp from './components/SignUp';
-import AuthDetails from './components/AuthDetails';
+import CheckIn from './pages/CheckIn';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        
+      <div className="w-10/12 mx-auto">
+
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<SignIn />} />
+
+          <Route element={<PrivateRoutes/>}>
+            <Route path="/dashboard" element={<CheckIn />} />
+          </Route>
         
 
-      </Routes>
-      <SignIn></SignIn>
-      <SignUp></SignUp>
-      <AuthDetails></AuthDetails>
+        </Routes>
+      </div>
     </Router>
   );
 }
