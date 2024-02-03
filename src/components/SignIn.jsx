@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {auth} from '../firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const SignIn = () => {
 
@@ -8,6 +9,13 @@ const SignIn = () => {
 
     const signInHandler = (e) => {
         e.preventDefault()
+        signInWithEmailAndPassword(auth, email, password)
+        .then((useCredential) => {
+            const user = useCredential.user
+            console.log(user)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
   return (
