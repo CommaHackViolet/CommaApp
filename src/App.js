@@ -12,7 +12,7 @@ import CheckInPage from './pages/CheckInPage';
 function App() {
   return (
     <Router>
-      <div className="w-10/12 mx-auto">
+      <div className="lg:w-10/12 w-11/12 mx-auto">
 
         <Navbar></Navbar>
         <Routes>
@@ -22,7 +22,7 @@ function App() {
 
           <Route element={<PrivateRoutes/>}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/checkin" element={<CheckInPage />} />
+            <Route path="/check-in" element={<CheckInPage />} />
           </Route>
         
 

@@ -26,7 +26,7 @@ function CheckInPage() {
        
         case 'birth control':
             return (
-                <div className='lg:w-1/2 mx-auto'>
+                <div className='lg:w-1/2 mx-auto lg:mt-0 mt-14'>
 
                     <div className="flex items-center mx-auto w-fit mb-20">
                         <div className="w-20 bg-primary badge" onClick={() => {
@@ -40,7 +40,7 @@ function CheckInPage() {
                         }}> </div>
                     </div>
 
-                    <h1 className='mx-auto text-7xl font-bold text-center'>did you take your birth control?</h1>
+                    <h1 className='mx-auto lg:text-7xl text-3xl font-bold text-center'>did you take your birth control?</h1>
 
                     <div className='mt-40 w-1/2 mx-auto'>
                         <button className="btn btn-block bg-primary"
@@ -62,7 +62,7 @@ function CheckInPage() {
             )
         case 'mood':
             return (
-                <div className='lg:w-1/2 mx-auto'>
+                <div className='lg:w-1/2 mx-auto lg:mt-0 mt-14'>
                     
                     <div className="flex items-center mx-auto w-fit mb-20">
                         <div className="w-20 bg-base-content badge" onClick={() => {
@@ -76,9 +76,9 @@ function CheckInPage() {
                         }}> </div>
                     </div>
 
-                    <h1 className='mx-auto text-7xl font-bold text-center'>how was your mood today?</h1>
+                    <h1 className='mx-auto lg:text-7xl text-3xl font-bold text-center'>how was your mood today?</h1>
 
-                    <div className='mt-40'>
+                    <div className='mt-40 lg:w-full w-3/4 mx-auto'>
                         <Slider value={[moodValue]} onValueChange={([newMoodValue]) => {
                             setMoodValue(newMoodValue)
                         }}></Slider>
@@ -92,7 +92,7 @@ function CheckInPage() {
                         </div>
                     </div>
 
-                    <div className="flex justify-between mt-40 mx-auto">
+                    <div className="flex justify-between mt-40 mx-auto lg:w-full w-3/4">
                         <button className="btn btn-block" onClick={() => {
                             setCheckInMood(moodValue)
                             setCheckInProgress('journal')
@@ -103,7 +103,7 @@ function CheckInPage() {
             )
         case 'journal':
             return (
-                <div className='lg:w-1/2 mx-auto'>
+                <div className='lg:w-1/2 mx-auto lg:mt-0 mt-14'>
 
                     <div className="flex items-center mx-auto w-fit mb-20">
                         <div className="w-20 bg-base-content badge" onClick={() => {
@@ -117,10 +117,10 @@ function CheckInPage() {
                         }}> </div>
                     </div>
 
-                    <h1 className='mx-auto text-7xl font-bold text-center'>whats on your mind?</h1>
+                    <h1 className='mx-auto lg:text-7xl text-3xl font-bold text-center'>whats on your mind?</h1>
 
                     <div className='mt-40'>
-                        <textarea className="textarea textarea-primary h-40 w-full" 
+                        <textarea className="textarea textarea-primary h-40 lg:w-full w-5/6 mx-auto block" 
                             placeholder="let your thoughts flow"
                             value={checkInJournal}
                             onChange={(e) => {
@@ -129,8 +129,8 @@ function CheckInPage() {
                         ></textarea>
                     </div>
 
-                    <div className="mt-40 mx-auto">
-                        <button className="btn btn-block btn-primary" onClick={() => {
+                    <div className="mt-40 mx-auto lg:w-full w-5/6">
+                        <button className="btn btn-block btn-primary lg:w-full mx-auto" onClick={() => {
                             submitCheckIn({
                                 birthControl: checkInBirthControl,
                                 mood: checkInMood,
@@ -145,7 +145,7 @@ function CheckInPage() {
             )
         case 'finished':
             return (
-                <div className='lg:w-1/2 mx-auto'>
+                <div className='lg:w-1/2 mx-auto lg:mt-0 mt-14'>
 
                     <div className="flex items-center mx-auto w-fit mb-20">
                         <div className="w-20 bg-primary badge" onClick={() => {
@@ -159,7 +159,7 @@ function CheckInPage() {
                         }}> </div>
                     </div>
 
-                    <h1 className='mx-auto text-7xl font-bold text-center'>you're set for today</h1>
+                    <h1 className='mx-auto lg:text-7xl text-3xl font-bold text-center'>you're set for today</h1>
 
                     <div className='mt-40'>
                        <div>
@@ -167,7 +167,7 @@ function CheckInPage() {
                        </div>
                     </div>
 
-                    <div className="mt-40 mx-auto">
+                    <div className="mt-40 mx-auto lg:full w-5/6">
                         <Link to='/dashboard' className="btn btn-block btn-primary">return to dashboard</Link>
                     </div>
 

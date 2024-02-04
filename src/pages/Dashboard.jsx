@@ -5,11 +5,14 @@ import { setDoc, doc, getDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useCheckIn } from '../context/CheckInContext';
+import { useEffect } from 'react';
 import { format } from 'date-fns'; // For formatting dates
+import { BsJournal } from "react-icons/bs";
 
 function Dashboard() {
 
   const {currentUser} = useAuth()
+
   const {
     checkInMood,
     checkInJournal,
@@ -17,8 +20,15 @@ function Dashboard() {
     setCheckInBirthControl,
     setCheckInMood,
     setCheckInJournal,
+    checkInLogs,
+    fetchCheckInLogs,
     addOrUpdateCheckIn,
   } = useCheckIn()
+
+  useEffect(() => {
+    fetchCheckInLogs()
+    console.log(checkInLogs);
+  }, []);
 
   const handleCheckIn = async () => {
 
@@ -34,87 +44,39 @@ function Dashboard() {
   }
 
   return (
-    <div>
-      <div className="w-1/3">
-        <h1 className='text-2xl font-bold mb-10'>{`daily check in for ${format(new Date(), 'eee').toLowerCase()} ${format(new Date(), 'MMM dd yyy').toLowerCase()}`}</h1>
-        <h2 className="text-2xl font-semibold mb-8">did you take birth control?</h2>
+    <div className='w-10/12 mx-auto'>
+      
+      <div className="lg:grid lg:grid-cols-2">
 
-        <div className={`btn btn-block hover:bg-red-300 hover:text-black ${checkInBirthControl ? 'btn-primary' : 'btn-outline btn-ghost'}`}
-          onClick={() => {
-            setCheckInBirthControl(!checkInBirthControl)
-            console.log(checkInBirthControl)
-          }}>
-          {
-          checkInBirthControl ? 'yes' : 'no'}
-        </div>
-        <div className="flex items-center">
-          <div>no</div>
-          <div>yes</div>
-        </div>
+        <div className="lg:grid">
 
-        <div className='mt-14'>
-          <h2 className="text-2xl font-semibold">how is your mood today?</h2>
+          <h2 className='text-3xl font-bold mb-10'>journals</h2>
 
-          <div className="flex items-center my-5">
-            <input type="radio" name="radio-5" className="radio radio-success" 
-              value='fantastic'
-              onChange={(e) => setCheckInMood(e.target.value)}
-              />
-            <span className="ml-2 font-semibold">fantastic</span>
-          </div>
+          {checkInLogs.map((log, i) => {
+            return (
+              <div key={i} className="my-2 font-bold flex">
+                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                <button className="btn" onClick={()=> {
+                  document.getElementById('my_modal_'+i).showModal()}
+                }>
+                  <BsJournal className='text-2xl mr-2'/>
+                  <h3>{format(log.date, 'eeee dd / yy')}</h3>
+                </button>
 
-          <div className="flex items-center my-5">
-            <input type="radio" name="radio-5" className="radio radio-primary" 
-              value='good'
-              onChange={(e) => setCheckInMood(e.target.value)}
-              />
-            <span className="ml-2 font-semibold">good</span>
-          </div>
-
-          <div className="flex items-center my-5">
-            <input type="radio" name="radio-5" className="radio radio-secondary"
-              value='okay'
-              onChange={(e) => setCheckInMood(e.target.value)}
-              />
-            <span className="ml-2 font-semibold">okay</span>
-          </div>
-
-          <div className="flex items-center my-5">
-            <input type="radio" name="radio-5" className="radio radio-neutral" 
-              value='neutral'
-              onChange={(e) => setCheckInMood(e.target.value)}
-              />
-            <span className="ml-2 font-semibold">neutral</span>
-          </div>
-
-          <div className="flex items-center my-5">
-            <input type="radio" name="radio-5" className="radio radio-accent" 
-              value='sad'
-              onChange={(e) => setCheckInMood(e.target.value)}
-              />
-            <span className="ml-2 font-semibold">sad</span>
-          </div>
-
-          <div className="flex items-center my-5">
-            <input type="radio" name="radio-5" className="radio radio-error text-red-900" 
-              value='horrible'
-              onChange={(e) => setCheckInMood(e.target.value)}
-              />
-            <span className="ml-2 font-semibold">horrible</span>
-          </div>
+                <dialog id={`my_modal_${i}`} className="modal">
+                  <div className="modal-box">
+                    <h3 className="font-bold text-lg">{`journal entry for ${format(log.date, 'eeee dd / yy').toLowerCase()}`}</h3>
+                    <p className="py-4 font-medium">{log.journal}</p>
+                  </div>
+                  <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                  </form>
+                </dialog>
+              </div>
+            )
+          })}
 
         </div>
-
-        <div className="mt-14"> 
-          <h2 className="text-2xl font-semibold mb-6">whats been on your mind?</h2>
-          <textarea className="textarea textarea-accent w-full h-60" 
-            placeholder="let your thoughts flow"
-            value={checkInJournal}
-            onChange={(e) => setCheckInJournal(e.target.value)}
-            ></textarea>
-        </div>
-        <button className={`btn btn-block mt-14 ${checkInMood == null ? 'btn-disabled' : 'btn-primary'}`} 
-          onClick={handleCheckIn}>check in</button>
       </div>
     </div>
   )
