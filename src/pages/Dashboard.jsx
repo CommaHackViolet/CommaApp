@@ -103,7 +103,8 @@ function Dashboard() {
             onChange={(e) => setJournal(e.target.value)}
             ></textarea>
         </div>
-        {/* <button className="btn btn-primary btn-lg" onClick={handleCheckIn}>check in</button> */}
+        <button className={`btn btn-block mt-14 ${mood == null ? 'btn-disabled' : 'btn-primary'}`} 
+          onClick={handleCheckIn}>check in</button>
       </div>
     </div>
   )
