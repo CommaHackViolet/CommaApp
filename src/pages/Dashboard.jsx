@@ -38,8 +38,37 @@ function Dashboard() {
 
         <h2 className="text-2xl font-semibold">how is your mood today?</h2>
         <div>
-          
-          <input type="radio" name="radio-5" className="radio radio-success" />
+
+          <div className="flex items-center">
+            <span className="mr-2">fantastic</span>
+            <input type="radio" name="radio-5" className="radio radio-success" />
+          </div>
+
+          <div className="flex items-center">
+            <span className="mr-2">good</span>
+            <input type="radio" name="radio-5" className="radio radio-success" />
+          </div>
+
+          <div className="flex items-center">
+            <span className="mr-2">okay</span>
+            <input type="radio" name="radio-5" className="radio radio-success" />
+          </div>
+
+          <div className="flex items-center">
+            <span className="mr-2">neutral</span>
+            <input type="radio" name="radio-5" className="radio radio-success" />
+          </div>
+
+          <div className="flex items-center">
+            <span className="mr-2">sad</span>
+            <input type="radio" name="radio-5" className="radio radio-success" />
+          </div>
+
+          <div className="flex items-center">
+            <span className="mr-2">horrible</span>
+            <input type="radio" name="radio-5" className="radio radio-success" />
+          </div>
+
         </div>
         {/* <button className="btn btn-primary btn-lg" onClick={handleCheckIn}>check in</button> */}
       </div>
