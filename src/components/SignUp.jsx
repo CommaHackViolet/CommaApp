@@ -14,8 +14,8 @@ const SignUp = () => {
     <div>
         <h1 className="text-2xl text-primary">create an account</h1>
 
-        <form onSubmit={() => {
-            signUpHandler(email, password)
+        <form onSubmit={(e) => {
+            signUpHandler(e, email, password)
         }}>
             <input type="email" 
                 placeholder='Enter your email' 

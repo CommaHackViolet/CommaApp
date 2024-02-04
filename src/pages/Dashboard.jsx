@@ -39,34 +39,34 @@ function Dashboard() {
         <h2 className="text-2xl font-semibold">how is your mood today?</h2>
         <div>
 
-          <div className="flex items-center">
-            <span className="mr-2">fantastic</span>
+          <div className="flex items-center my-5">
             <input type="radio" name="radio-5" className="radio radio-success" />
+            <span className="ml-2 font-semibold">fantastic</span>
           </div>
 
-          <div className="flex items-center">
-            <span className="mr-2">good</span>
-            <input type="radio" name="radio-5" className="radio radio-success" />
+          <div className="flex items-center my-5">
+            <input type="radio" name="radio-5" className="radio radio-primary" />
+            <span className="ml-2 font-semibold">good</span>
           </div>
 
-          <div className="flex items-center">
-            <span className="mr-2">okay</span>
-            <input type="radio" name="radio-5" className="radio radio-success" />
+          <div className="flex items-center my-5">
+            <input type="radio" name="radio-5" className="radio radio-secondary" />
+            <span className="ml-2 font-semibold">okay</span>
           </div>
 
-          <div className="flex items-center">
-            <span className="mr-2">neutral</span>
-            <input type="radio" name="radio-5" className="radio radio-success" />
+          <div className="flex items-center my-5">
+            <input type="radio" name="radio-5" className="radio radio-neutral" />
+            <span className="ml-2 font-semibold">neutral</span>
           </div>
 
-          <div className="flex items-center">
-            <span className="mr-2">sad</span>
-            <input type="radio" name="radio-5" className="radio radio-success" />
+          <div className="flex items-center my-5">
+            <input type="radio" name="radio-5" className="radio radio-accent" />
+            <span className="ml-2 font-semibold">sad</span>
           </div>
 
-          <div className="flex items-center">
-            <span className="mr-2">horrible</span>
-            <input type="radio" name="radio-5" className="radio radio-success" />
+          <div className="flex items-center my-5">
+            <input type="radio" name="radio-5" className="radio radio-error" />
+            <span className="ml-2 font-semibold">horrible</span>
           </div>
 
         </div>
