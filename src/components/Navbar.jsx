@@ -3,15 +3,17 @@ import { useAuth } from '../context/AuthContext'
 import { PiFlowerTulipFill, PiCalendarDuotone, PiSignOutBold } from "react-icons/pi";
 import { Link } from 'react-router-dom'
 import { MdMenu } from "react-icons/md";
+import logo from '../assets/logo.png'
 
 function Navbar() {
     const {currentUser, signOutHandler} = useAuth()
 
   return (
-    <div className="navbar bg-base-100">
-        <div className="flex-1">
+    <div className="navbar bg-base-100 w-11/12 mx-auto">
+        <Link to='/' className="flex-1">
+            <img src={logo} className='w-[50px]' alt="" />
             <a className="btn btn-ghost text-xl">comma</a>
-        </div>
+        </Link>
 
 
         <div className="flex-none">

@@ -22,7 +22,7 @@
 
            <div className="w-full max-w-sm space-y-2 mt-4">
               <Link to="/register" className="btn btn-primary btn-block">
-                Sign up
+                sign up
               </Link>
            </div>
 
@@ -39,7 +39,7 @@
                 <p className="py-6">
                   your history is logged overtime for you to view and track your consistency
                 </p>
-                <button className="btn btn-primary">Get Started</button>
+                <Link to='/register' className="btn btn-primary">get started</Link>
               </div>
             </div>
           </div>
