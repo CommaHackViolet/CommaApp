@@ -17,7 +17,8 @@ const SignIn = () => {
         <h1 className="text-2xl text-primary">login to your account</h1>
 
         <form onSubmit={(e) => {
-            signInHandler(e, email, password)
+            e.preventDefault()
+            signInHandler(email, password)
             .then(() => navigate('/dashboard'))
         }}>
             <input type="email" 

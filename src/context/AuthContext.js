@@ -15,8 +15,8 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
 // SIGN UP
-  const signUpHandler = (e, email, password) => {
-    e.preventDefault()
+  const signUpHandler = (email, password) => {
+    
     return createUserWithEmailAndPassword(auth, email, password)
     .then((useCredential) => {
         const user = useCredential.user
@@ -29,8 +29,8 @@ export const AuthProvider = ({ children }) => {
 }
 
 // SIGN IN
-  const signInHandler = (e, email, password) => {
-    e.preventDefault()
+  const signInHandler = (email, password) => {
+    
     return signInWithEmailAndPassword(auth, email, password)
     .then((useCredential) => {
         const user = useCredential.user

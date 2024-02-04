@@ -18,7 +18,8 @@ const SignUp = () => {
         <h1 className="text-2xl text-primary">create an account</h1>
 
         <form onSubmit={(e) => {
-            signUpHandler(e, email, password)
+            e.preventDefault()
+            signUpHandler(email, password)
             .then(() => navigate('/dashboard'))
         }}>
             <input type="email" 
