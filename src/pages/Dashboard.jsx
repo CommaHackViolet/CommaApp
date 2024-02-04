@@ -33,8 +33,14 @@ function Dashboard() {
   return (
     <div>
       <div className="w-1/3">
-        <h1 className="text-2xl font-semibold">did you take your birth control?</h1>
+        <h2 className="text-2xl font-semibold">did you take your birth control?</h2>
         <button className="btn btn-block btn-primary">yes</button>
+
+        <h2 className="text-2xl font-semibold">how is your mood today?</h2>
+        <div>
+          
+          <input type="radio" name="radio-5" className="radio radio-success" />
+        </div>
         {/* <button className="btn btn-primary btn-lg" onClick={handleCheckIn}>check in</button> */}
       </div>
     </div>

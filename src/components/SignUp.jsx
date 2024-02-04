@@ -1,28 +1,22 @@
 import React, {useState} from 'react'
 import {auth} from '../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { useAuth } from '../context/AuthContext'
 
 const SignUp = () => {
 
+    const {signUpHandler} = useAuth()
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const signUpHandler = (e) => {
-        e.preventDefault()
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((useCredential) => {
-            const user = useCredential.user
-            console.log(user)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
 
   return (
     <div>
         <h1 className="text-2xl text-primary">create an account</h1>
 
-        <form onSubmit={signUpHandler}>
+        <form onSubmit={() => {
+            signUpHandler(email, password)
+        }}>
             <input type="email" 
                 placeholder='Enter your email' 
                 value={email}
