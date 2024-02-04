@@ -1,15 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import firebase from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
 import { setDoc, doc, getDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
-import { format } from "date-fns"; 
+import { useCheckIn } from '../context/CheckInContext';
 
 function Dashboard() {
 
   const {currentUser} = useAuth()
-  console.log(currentUser);
+  const {currentCheckIn, addOrUpdateCheckIn} = useCheckIn()
+  
+  const [checkInData, setCheckInData] = useState({
+    birthControl: false,
+    mood: 'neutral',
+    journal: 'I am feeling okay today',
+  })
 
   const handleCheckIn = async () => {
 
@@ -21,23 +27,16 @@ function Dashboard() {
       userID: currentUser.uid
     }
 
-    const today = format(new Date(), "yyyy-MM-dd"); // Format today's date as YYYY-MM-DD
-    const docId = currentUser.uid + '_' + today; // Create a unique doc ID based on user ID and date
-    const docRef = doc(db, "check-ins", docId);
-
-    // Try to retrieve an existing check-in document for today
-    const docSnap = await getDoc(docRef);
-
-    if(docSnap.exists()) {
-      await setDoc(docRef, payload, { merge: true })
-    } else {
-      await setDoc(docRef, payload)
-    }
+    addOrUpdateCheckIn(checkInData)
   }
 
   return (
     <div>
-      <button className="btn btn-primary btn-lg" onClick={handleCheckIn}>check in</button>
+      <div className="w-1/3">
+        <h1 className="text-2xl font-semibold">did you take your birth control?</h1>
+        <button className="btn btn-block btn-primary">yes</button>
+        {/* <button className="btn btn-primary btn-lg" onClick={handleCheckIn}>check in</button> */}
+      </div>
     </div>
   )
 }
