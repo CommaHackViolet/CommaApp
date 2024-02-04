@@ -23,16 +23,20 @@ const SignUp = () => {
             .then(() => navigate('/dashboard'))
         }}>
             <input type="email" 
+                className='input input-primary w-full my-3'
                 placeholder='Enter your email' 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 />
+            <br />
             <input type="password" 
+                className='input input-primary w-full my-3'
                 placeholder='Enter your password' 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
-            <button className="btn" type='submit'>sign up</button>
+            <br />
+            <button className="btn btn-block btn-primary my-3" type='submit'>sign up</button>
         </form>
     </div>
   )

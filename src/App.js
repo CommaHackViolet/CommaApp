@@ -4,7 +4,7 @@ import LandingPage from './pages/LandingPage';
 import PrivateRoutes from './components/PrivateRoutes';
 
 import SignIn from './pages/SignIn';
-import SignUp from './components/SignUp';
+import RegisterPage from './pages/RegisterPage';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import CheckInPage from './pages/CheckInPage';
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
+          <Route path="/register" element={<RegisterPage />} />
 
           <Route element={<PrivateRoutes/>}>
             <Route path="/dashboard" element={<Dashboard />} />

@@ -14,7 +14,7 @@ const SignIn = () => {
 
   return (
     <div className='w-1/3 mx-auto mt-20'>
-        <h1 className="text-2xl text-primary">login to your account</h1>
+        <h1 className="text-4xl font-bold">login</h1>
 
         <form onSubmit={(e) => {
             e.preventDefault()
