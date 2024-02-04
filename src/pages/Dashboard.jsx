@@ -67,16 +67,25 @@ function Dashboard() {
 
                 <dialog id={`my_modal_${i}`} className="modal">
                   <div className="modal-box">
-                    <h3 className="font-bold text-lg">{`journal entry for ${format(log.date, 'eeee dd / yy').toLowerCase()}`}</h3>
+                    <h3 className="font-bold text-lg">{`${format(log.date, 'eeee dd / yy').toLowerCase()}`}</h3>
 
-                    <h4 className="text-md font-semibold mt-4">Birth Control?</h4>
-                    <p className="font-medium">{`${log.birthControl ? 'Yes' : 'No'}`}</p>
+                    <h4 className="text-xl font-semibold mt-4 mb-2">Birth Control?</h4>
+                    <p className="font-medium">
+                      {log.birthControl ? 
+                      
+                        <input type="checkbox" checked="checked" className="checkbox checkbox-primary" />
+                      :
+                      <>
+                        <input type="checkbox" className="checkbox" disabled />
+                      </> 
+                      }
+                    </p>
 
 
-                    <h4 className="text-md font-semibold mt-4">Mood</h4>
+                    <h4 className="text-xl font-semibold mt-8 mb-4">Mood</h4>
                     <Slider value={[log.mood]}></Slider>
 
-                    <h4 className="text-md font-semibold mt-4">Journal</h4>
+                    <h4 className="text-xl font-semibold mt-8">Journal</h4>
                     <p className="py-4 font-medium">{log.journal}</p>
                   </div>
                   <form method="dialog" className="modal-backdrop">
