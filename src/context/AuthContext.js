@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
     .then((useCredential) => {
         const user = useCredential.user
         setCurrentUser(user)
+        setLoading(false)
         return user
     }).catch((error) => {
         console.log(error)
