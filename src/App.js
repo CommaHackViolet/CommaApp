@@ -5,7 +5,7 @@ import PrivateRoutes from './components/PrivateRoutes';
 
 import SignIn from './pages/SignIn';
 import SignUp from './components/SignUp';
-import CheckIn from './pages/CheckIn';
+import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" element={<SignIn />} />
 
           <Route element={<PrivateRoutes/>}>
-            <Route path="/dashboard" element={<CheckIn />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         
 
