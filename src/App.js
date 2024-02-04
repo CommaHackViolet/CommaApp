@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './components/SignUp';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+import CheckInPage from './pages/CheckInPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
           <Route element={<PrivateRoutes/>}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/checkin" element={<CheckInPage />} />
           </Route>
         
 

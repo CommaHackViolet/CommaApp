@@ -13,11 +13,16 @@ export const CheckInProvider = ({ children }) => {
 
   const {currentUser} = useAuth()
 
+  const [checkInProgress, setCheckInProgress] = useState('birth control');
   const [currentCheckIn, setCurrentCheckIn] = useState(null);
 
+  const [checkInBirthControl, setCheckInBirthControl] = useState(false);
+  const [checkInMood, setCheckInMood] = useState(3);
+  const [checkInJournal, setCheckInJournal] = useState('');
+
   // Function to add or update a check-in
-  const addOrUpdateCheckIn = async (checkInData) => {
-    console.log(checkInData)
+  const submitCheckIn = async (checkInData) => {
+    
     const today = format(new Date(), 'yyyy-MM-dd');
     const docId = currentUser.uid + '_' + today; // Create a unique doc ID based on user ID and date
     const docRef = doc(db, 'check-ins', docId);
@@ -43,7 +48,7 @@ export const CheckInProvider = ({ children }) => {
   useEffect(() => {
     // Define a function to fetch the current check-in (if needed)
     const fetchCurrentCheckIn = async (userId) => {
-      // Implementation similar to addOrUpdateCheckIn, but for fetching
+      // Implementation similar to submitCheckIn, but for fetching
       // Remember to handle loading and error states as needed
     };
 
@@ -51,8 +56,15 @@ export const CheckInProvider = ({ children }) => {
   }, []); // Add dependencies as needed, e.g., userId
 
   const value = {
-    currentCheckIn,
-    addOrUpdateCheckIn,
+    checkInMood,
+    checkInProgress,
+    checkInJournal,
+    checkInBirthControl,
+    setCheckInProgress,
+    setCheckInBirthControl,
+    setCheckInMood,
+    setCheckInJournal,
+    submitCheckIn,
   };
 
   return (
