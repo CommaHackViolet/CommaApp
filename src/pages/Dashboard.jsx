@@ -8,6 +8,8 @@ import { useCheckIn } from '../context/CheckInContext';
 import { useEffect } from 'react';
 import { format } from 'date-fns'; // For formatting dates
 import { BsJournal } from "react-icons/bs";
+import { Calendar } from '../components/Calendar';
+import { Slider } from '../components/Slider';
 
 function Dashboard() {
 
@@ -66,6 +68,15 @@ function Dashboard() {
                 <dialog id={`my_modal_${i}`} className="modal">
                   <div className="modal-box">
                     <h3 className="font-bold text-lg">{`journal entry for ${format(log.date, 'eeee dd / yy').toLowerCase()}`}</h3>
+
+                    <h4 className="text-md font-semibold mt-4">Birth Control?</h4>
+                    <p className="font-medium">{`${log.birthControl ? 'Yes' : 'No'}`}</p>
+
+
+                    <h4 className="text-md font-semibold mt-4">Mood</h4>
+                    <Slider value={[log.mood]}></Slider>
+
+                    <h4 className="text-md font-semibold mt-4">Journal</h4>
                     <p className="py-4 font-medium">{log.journal}</p>
                   </div>
                   <form method="dialog" className="modal-backdrop">
@@ -76,6 +87,10 @@ function Dashboard() {
             )
           })}
 
+        </div>
+
+        <div className="lg:grid">
+          <Calendar></Calendar>
         </div>
       </div>
     </div>
