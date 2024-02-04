@@ -12,11 +12,11 @@
        <div className="container px-4 md:px-6 mx-auto">
          <div className="flex flex-col items-center space-y-4 text-center">
            <div className="">
-             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-               never skip birth control again
+             <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl/none">
+               a simple way to stay on track
              </h1>
              <p className="mx-auto max-w-[700px] my-10">
-               Manage your birth control with ease. Get notified when it's time to take your pill, change your patch, or get a new ring.
+               manage your birth control with ease, get notified when it's time to take your pill, change your patch, or get a new ring
              </p>
            </div>
 
@@ -35,9 +35,9 @@
             <div className="hero-content flex justify-between">
               <img src={calendar} className="max-w-sm rounded-lg shadow-2xl" />
               <div className="ml-40">
-                <h2 className="text-4xl font-bold">track your consistency</h2>
-                <p className="py-6">
-                  your history is logged overtime for you to view and track your consistency
+                <h2 className="text-4xl font-bold">never skip birth control again</h2>
+                <p className="py-6 w-3/4">
+                  your history is logged overtime for you to view and track your mental health and bc usage
                 </p>
                 <Link to='/register' className="btn btn-primary">get started</Link>
               </div>
